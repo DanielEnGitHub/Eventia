@@ -7,9 +7,14 @@ export const theme = extendTheme({
       secondary: "#111322",
       green: "#C0C9A2",
       mid: "#DBC9BF",
-      greyWhite: "#EDECE8",
+      grayWhite: "#EDECE8",
       blue: "#506D84",
       white: "#F5F4F0",
+      gray: "#A7A7A7",
+      blueWhite: "#1562E8",
+      success: "#18DF44",
+      warning: "#FFA113",
+      error: "#F41213",
     },
     primary: {
       300: "#F7D8C1",
@@ -25,6 +30,10 @@ export const theme = extendTheme({
       300: "#B6C28F",
       500: "#C0C9A2",
       600: "#ADBD79",
+    },
+    gray: {
+      100: "#EEEEEE",
+      500: "#A7A7A7",
     },
   },
   fonts: {

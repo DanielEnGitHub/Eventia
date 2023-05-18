@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Components from "../pages/public/Components";
+import Components from "../pages/public/Components/";
 
 const Rutas = () => {
   return (
