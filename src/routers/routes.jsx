@@ -1,13 +1,23 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Components from "../pages/public/Components/";
+import PrivateRouter from "./config/PrivateRouter";
+import PrivateRoutes from "./PrivateRoutes";
+import PublicRoutes from "./PublicRoutes";
 
 const Rutas = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<h1>HOME</h1>} />
-        <Route path="/components" element={<Components />} />
+        <Route path="*" element={<PublicRoutes />} />
+
+        <Route
+          path="/app/*"
+          element={
+            <PrivateRouter>
+              <PrivateRoutes />
+            </PrivateRouter>
+          }
+        />
       </Routes>
     </Router>
   );
