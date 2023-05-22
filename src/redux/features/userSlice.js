@@ -1,26 +1,26 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore/lite";
-import { auth, db } from "../../firebase/config";
+import { auth, dbLite } from "../../firebase/config";
 import { toast } from "react-hot-toast";
 
 export const loginToApp = createAsyncThunk(
   "user/loginToApp",
-  async ({ email, password }, { dispatch }) => {
+  async ({ email, password }, { dispatch, rejectWithValue }) => {
     try {
       const user_auth = await signInWithEmailAndPassword(auth, email, password);
 
-      const docRef = doc(db, "users", user_auth.user.uid);
+      const docRef = doc(dbLite, "users", user_auth.user.uid);
 
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
         if (docSnap.data().active) {
           return {
-            email: user_auth.user.email,
-            uid: user_auth.user.uid,
-            displayName: user_auth.user.displayName,
-            photoUrl: user_auth.user.photoURL,
+            email: user_auth?.user.email,
+            uid: user_auth?.user.uid,
+            displayName: user_auth?.user?.displayName,
+            photoUrl: user_auth?.user?.photoURL,
             ...docSnap.data(),
           };
         } else {
@@ -35,7 +35,7 @@ export const loginToApp = createAsyncThunk(
       }
     } catch (err) {
       toast.error("Credenciales incorrectas");
-      return err;
+      return rejectWithValue(err.message);
     }
   }
 );

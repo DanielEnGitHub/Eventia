@@ -1,6 +1,7 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Components from "../pages/public/Components";
+import Login from "../pages/public/Login/Login";
+import PublicRouter from "./config/PublicRouter";
 
 const PublicRoutes = () => {
   /* RUTAS PRIVADAS */
@@ -8,7 +9,15 @@ const PublicRoutes = () => {
     <>
       <Routes>
         {/* ----Dasboard---- */}
-        <Route end path="/" element={<h1>Login</h1>} />
+        <Route
+          end
+          path="/"
+          element={
+            <PublicRouter>
+              <Login />
+            </PublicRouter>
+          }
+        />
         <Route end path="/components" element={<Components />} />
       </Routes>
     </>
