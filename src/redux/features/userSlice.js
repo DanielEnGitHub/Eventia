@@ -6,7 +6,7 @@ import { toast } from "react-hot-toast";
 
 export const loginToApp = createAsyncThunk(
   "user/loginToApp",
-  async ({ email, password }, { dispatch, rejectWithValue }) => {
+  async ({ email, password }, { dispatch }) => {
     try {
       const user_auth = await signInWithEmailAndPassword(auth, email, password);
 
@@ -34,8 +34,8 @@ export const loginToApp = createAsyncThunk(
         dispatch(logout());
       }
     } catch (err) {
-      toast.error(err.message);
-      return rejectWithValue(err);
+      toast.error("Credenciales incorrectas");
+      return err;
     }
   }
 );
@@ -74,6 +74,7 @@ export const userSlice = createSlice({
 export const { login, logout } = userSlice.actions;
 
 // selectors
+export const selectLoading = (state) => state.user.loading;
 export const selectUser = (state) => state.user.user;
 
 export default userSlice.reducer;
