@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { loginToApp, selectLoading } from "../../../redux/features/userSlice";
-import { Flex, Image, Stack, Show, Hide, Box } from "@chakra-ui/react";
+import { Flex, Image, Stack, Show, Hide, Box, Center } from "@chakra-ui/react";
 import { bg } from "../../../utils/Utils";
 import InputFormValidation from "../../../components/Inputs/InputFormValidation/InputFormValidation.jsx";
 import Button from "../../../components/Buttons/Button/Button.jsx";
@@ -27,19 +27,28 @@ const Login = () => {
     <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
       <Hide below="md">
         <Flex flex={1}>
-          <Image borderRadius={"0px 14px 14px 0px"} alt={"Login Image"} objectFit={"cover"} src={bg} />
+          <Image
+            borderRadius={"0px 14px 14px 0px"}
+            alt={"Login Image"}
+            objectFit={"cover"}
+            src={bg}
+          />
         </Flex>
       </Hide>
 
       <Flex p={8} flex={1} align={"center"} justify={"center"}>
         <Stack spacing={4} w={"full"} maxW={"md"}>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <Title content="¡Hola otra vez!" />
-            <TextContent
-              content="Bienvenido al admin de Eventia"
-              gray
-              marginBottom="12"
-            />
+            <Center>
+              <Title content="¡Hola otra vez!" />
+            </Center>
+            <Center>
+              <TextContent
+                content="Bienvenido al admin de Eventia"
+                gray
+                marginBottom="12"
+              />
+            </Center>
             <InputFormValidation
               Icon={EmailIcon}
               placeholder="Ingresa tu correo"
