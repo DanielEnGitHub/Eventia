@@ -15,8 +15,6 @@ export const useLogOut = () => {
 
         const docSnap = await getDoc(docRef);
 
-        console.log(docSnap.data());
-
         if (docSnap.exists()) {
           if (docSnap.data().active) {
             dispatch(

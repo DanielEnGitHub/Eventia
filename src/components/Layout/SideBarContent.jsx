@@ -1,9 +1,11 @@
 import { Flex, VStack } from "@chakra-ui/react";
 import React from "react";
+import { useLogOut } from "../../hooks/useLogOut";
 import { Ilogout, Event } from "../../utils/Utils";
 import SideButton from "../Buttons/SideButton";
 
 const SideBarContent = ({ onMobile = false }) => {
+  const { logOut } = useLogOut();
   return (
     <Flex
       h="100%"
@@ -31,7 +33,7 @@ const SideBarContent = ({ onMobile = false }) => {
           active: Ilogout,
           alt: "Cerrar sesion",
         }}
-        // onClick={logOut}
+        onClick={logOut}
         // onMobile={onMobile}
       />
     </Flex>
