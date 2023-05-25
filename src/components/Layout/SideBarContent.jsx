@@ -1,11 +1,13 @@
 import { Flex, VStack } from "@chakra-ui/react";
 import React from "react";
 import { useLogOut } from "../../hooks/useLogOut";
+import { useSidebarContent } from "../../hooks/useSidebarContent";
 import { Ilogout, Event } from "../../utils/Utils";
 import SideButton from "../Buttons/SideButton";
 
 const SideBarContent = ({ onMobile = false }) => {
   const { logOut } = useLogOut();
+  const { activeMenu, onClose, handleClick } = useSidebarContent();
   return (
     <Flex
       h="100%"
@@ -17,11 +19,11 @@ const SideBarContent = ({ onMobile = false }) => {
       <VStack gap={6}>
         <SideButton
           icons={{ base: Event, active: Event, alt: "Inicio" }}
-          active={true}
-          //   onClick={() => {
-          //     onClose();
-          //     handleClick("home");
-          //   }}
+          active={activeMenu.home}
+            onClick={() => {
+              onClose();
+              handleClick("home");
+            }}
           buttonLink
           to="/app"
           onMobile={onMobile}

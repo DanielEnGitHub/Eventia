@@ -1,8 +1,12 @@
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Grid, GridItem, useBreakpointValue } from "@chakra-ui/react";
 import React from "react";
 import SideBar from "../../components/Layout/SideBar";
 
+const smVariant = { navigation: "drawer", navigationButton: true };
+const mdVariant = { navigation: "sidebar", navigationButton: false };
+
 const Main = ({ children }) => {
+  const variants = useBreakpointValue({ base: smVariant, md: mdVariant });
   return (
     <Grid
       templateAreas={{
@@ -23,7 +27,7 @@ const Main = ({ children }) => {
       // color="blackAlpha.700"
     >
       {/* ----Grid item for sidebar---- */}
-      <SideBar area={"side"} />
+      <SideBar area={"side"} variant={variants?.navigation} />
 
       <GridItem area={"main"} maxHeight="86vh" overflow="auto" px="2" mb="5">
         {children}
