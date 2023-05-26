@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Components from "../pages/public/Components";
 import Login from "../pages/public/Login/Login";
 import PublicRouter from "./config/PublicRouter";
+import ConfimrAssistance from "../pages/public/ConfimrAssistance";
 
 const PublicRoutes = () => {
   /* RUTAS PRIVADAS */
@@ -19,6 +20,11 @@ const PublicRoutes = () => {
           }
         />
         <Route end path="/components" element={<Components />} />
+        <Route
+          end
+          path="/confirmar-asistencia"
+          element={<ConfimrAssistance />}
+        />
         <Route path="*" element={<h2>404</h2>} />
       </Routes>
     </>
