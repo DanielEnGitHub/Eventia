@@ -1,11 +1,13 @@
-import { Box } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import Logo from "../../../components/Logo/Logo";
+import HeaderInfo from "../../../components/HeaderInfo/HeaderInfo";
 
 const ConfimrAssistance = () => {
   return (
-    <Box bgColor="brand.bgWhite" minH="100vh">
+    <Flex bgColor="brand.bgWhite" minH="100vh" alignItems="center" justifyContent="center" flexDir="column">
+      <HeaderInfo />
       <Logo />
-    </Box>
+    </Flex>
   );
 };
 
