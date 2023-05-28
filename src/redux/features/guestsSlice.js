@@ -166,10 +166,11 @@ export const getGuestByCode = createAsyncThunk(
       const querySnapshot = await getDocs(q);
 
       if (querySnapshot.docs.length > 0) {
+        const { updated_at, ...rest } = querySnapshot.docs[0].data();
         const docSnap = querySnapshot.docs[0];
         toast.success("Invitacion encontrada");
         return {
-          ...docSnap.data(),
+          ...rest,
           id: docSnap.id,
         };
       } else {
@@ -212,31 +213,22 @@ export const changeStateGuest = createAsyncThunk(
 
 export const updateGuest = createAsyncThunk(
   "guest/updateGuest",
-  async (
-    { id, guest_name, description, show_in_ecommerce = true, onClose, reset },
-    { dispatch, rejectWithValue }
-  ) => {
+  async ({ id, guests }, { dispatch, rejectWithValue, getState }) => {
     try {
-      const slug = guest_name.toLowerCase().replace(/ /g, "_");
+      const { guests: _guests } = getState().guest;
       const guest = updateDoc(doc(db, "guests", id), {
-        guest_name,
-        description,
-        show_in_ecommerce,
-        slug,
+        guests,
+        registered: true,
         updated_at: new Date(),
       });
 
       await toast.promise(guest, {
         loading: "Actualizando...",
-        success: "Invitacion actualizada",
-        error: "Error al actualizar la invitacion",
+        success: "Invitacion confirmada",
+        error: "Error al confirmar la invitacion",
       });
 
-      onClose();
-      reset();
-
-      dispatch(resetPage());
-      dispatch(getdGuests({ isNextPage: false, isPrevPage: false }));
+      dispatch(setGuesteByCode({ ..._guests, guests, registered: true }));
 
       return guest;
     } catch (err) {
@@ -275,6 +267,9 @@ export const guestSlice = createSlice({
     },
     setGuestSelected: (state, action) => {
       state.guest_selected = action.payload;
+    },
+    setGuesteByCode: (state, action) => {
+      state.guest_by_code = action.payload;
     },
 
     nextPage: (state) => {
@@ -374,6 +369,7 @@ export const {
   logout,
   setIsUpdate,
   setGuestSelected,
+  setGuesteByCode,
   nextPage,
   prevPage,
   setFirstVisible,

@@ -1,8 +1,8 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 
-const HeaderInfo = () => {
+const HeaderInfo = ({ ...props }) => {
   return (
-    <Flex alignItems="center" gap="3" mb="20">
+    <Flex alignItems="center" gap="3" mb="20" {...props}>
       <Text color="landing.secondary" fontSize="4xl">
         Sábado
       </Text>
