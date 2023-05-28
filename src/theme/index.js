@@ -15,6 +15,15 @@ export const theme = extendTheme({
       success: "#18DF44",
       warning: "#FFA113",
       error: "#F41213",
+      bgWhite: "#F5F1EE",
+    },
+    landing: {
+      primary: "#d1ba8e",
+      secondary: "#C0C9A2",
+      secondaryLight: "#EAE9DF",
+      background: "#F5F1EE",
+      backgroundDark: "#E5DFDA",
+      textColor: "#4A4847",
     },
     primary: {
       300: "#F7D8C1",
@@ -40,7 +49,9 @@ export const theme = extendTheme({
     heading: "font-family: 'Roboto', sans-serif;",
     body: "font-family: 'Roboto', sans-serif;",
   },
-
+  fontSizes: {
+    title: "10rem",
+  },
   shadows: {
     sidebar: "-5px 0px 20px 10px rgba(0, 0, 0, 0.05);",
     card: "0px 20px 50px 15px rgba(0, 0, 0, 0.05);",
