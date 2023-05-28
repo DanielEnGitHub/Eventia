@@ -157,6 +157,32 @@ export const getGuest = createAsyncThunk(
   }
 );
 
+export const getGuestByCode = createAsyncThunk(
+  "guest/getGuestByCode",
+  async ({ invitation_code }, { rejectWithValue }) => {
+    try {
+      const docRef = collection(db, "guests");
+      const q = query(docRef, where("invitation_code", "==", invitation_code));
+      const querySnapshot = await getDocs(q);
+
+      if (querySnapshot.docs.length > 0) {
+        const docSnap = querySnapshot.docs[0];
+        toast.success("Invitacion encontrada");
+        return {
+          ...docSnap.data(),
+          id: docSnap.id,
+        };
+      } else {
+        toast.error("No se encontró la invitacion");
+        return rejectWithValue("No se encontró la invitacion");
+      }
+    } catch (err) {
+      console.log("err", err);
+      return rejectWithValue(err);
+    }
+  }
+);
+
 export const changeStateGuest = createAsyncThunk(
   "guest/changeStateGuest",
   async ({ guest_id }, { dispatch, rejectWithValue }) => {
@@ -224,6 +250,7 @@ export const guestSlice = createSlice({
   initialState: {
     guest: null,
     guests: [],
+    guest_by_code: null,
     guest_data_update: null,
     guest_selected: null,
     loading: false,
@@ -306,6 +333,18 @@ export const guestSlice = createSlice({
       state.error = action.payload.message;
     },
 
+    [getGuestByCode.pending]: (state) => {
+      state.loading = true;
+    },
+    [getGuestByCode.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.guest_by_code = action.payload;
+    },
+    [getGuestByCode.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+
     [changeStateGuest.pending]: (state) => {
       state.loading_guest = true;
     },
@@ -344,6 +383,7 @@ export const {
 
 // selectors
 export const selectGuest = (state) => state.guest.guest;
+export const selectGuestByCode = (state) => state.guest.guest_by_code;
 export const selectLoading = (state) => state.guest.loading;
 export const selectdGuests = (state) => state.guest.guests;
 export const selectLoadingdGuests = (state) => state.guest.loading_guest;
