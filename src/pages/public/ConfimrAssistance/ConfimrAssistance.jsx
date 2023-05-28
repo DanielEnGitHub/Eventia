@@ -32,7 +32,7 @@ const ConfimrAssistance = () => {
     general_name,
     guests: guests_data,
     table_number,
-    // registered,
+    registered,
   } = selectGuest || {};
 
   const handleAttend = (e, id) => {
@@ -83,7 +83,9 @@ const ConfimrAssistance = () => {
         <Grid
           templateAreas={{
             base: `"mesa" "titulo" "nombre" "tabla" "total" "boton"`,
-            md: `"mesa mesa" "titulo nombre" "tabla tabla" "total boton"`,
+            md: `"mesa mesa" "${
+              registered ? "nombre nombre" : "titulo nombre"
+            }" "tabla tabla" "total boton"`,
           }}
           gridTemplateRows={{
             base: "70px 150px 150px 1fr 70px 70px",
@@ -115,23 +117,25 @@ const ConfimrAssistance = () => {
             </Text>
           </GridItem>
 
-          <GridItem
-            gridArea="titulo"
-            bgColor="brand.bgWhite"
-            border="1px"
-            px="6"
-            borderColor="landing.textColor"
-            display="flex"
-            flexDir="column"
-            justifyContent="center"
-          >
-            <FontText fontSize="6xl" color="landing.textColor">
-              Confirmar
-            </FontText>
-            <FontText fontSize="6xl" color="landing.textColor">
-              Asistencia
-            </FontText>
-          </GridItem>
+          {!registered && (
+            <GridItem
+              gridArea="titulo"
+              bgColor="brand.bgWhite"
+              border="1px"
+              px="6"
+              borderColor="landing.textColor"
+              display="flex"
+              flexDir="column"
+              justifyContent="center"
+            >
+              <FontText fontSize="6xl" color="landing.textColor">
+                Confirmar
+              </FontText>
+              <FontText fontSize="6xl" color="landing.textColor">
+                Asistencia
+              </FontText>
+            </GridItem>
+          )}
 
           <GridItem
             gridArea="nombre"
@@ -143,12 +147,19 @@ const ConfimrAssistance = () => {
             flexDir="column"
             justifyContent="center"
           >
-            {general_name &&
+            {!registered &&
+              general_name &&
               general_name?.split(" ").map((name) => (
                 <FontText key={name} fontSize="6xl" color="landing.textColor">
                   {name}
                 </FontText>
               ))}
+
+            {registered && (
+              <FontText fontSize="6xl" color="landing.textColor">
+                {general_name}
+              </FontText>
+            )}
           </GridItem>
 
           <GridItem
@@ -181,14 +192,25 @@ const ConfimrAssistance = () => {
                     </Text>
                   </GridItem>
                   <GridItem gridColumn="3/4" display="flex" gap="3">
-                    <Switch
-                      colorScheme="green"
-                      size="lg"
-                      onChange={(e) => handleAttend(e, guest.id)}
-                      isChecked={guest.attend}
-                    />
-                    <Text fontSize="lg" color="landing.textColor">
-                      {guest.attend ? "Asistirá" : "No Asistirá"}
+                    {!registered && (
+                      <Switch
+                        colorScheme="green"
+                        size="lg"
+                        onChange={(e) => handleAttend(e, guest.id)}
+                        isChecked={guest.attend}
+                      />
+                    )}
+                    <Text
+                      fontSize="lg"
+                      color="landing.textColor"
+                      opacity={guest.attend ? "1" : "0.7"}
+                      fontWeight={guest.attend ? "bold" : "normal"}
+                    >
+                      {guest.attend
+                        ? registered
+                          ? "Si Asistirá"
+                          : "Asistirá"
+                        : "No Asistirá"}
                     </Text>
                   </GridItem>
                 </React.Fragment>
@@ -219,12 +241,14 @@ const ConfimrAssistance = () => {
             justifyContent="end"
             px="6"
           >
-            <Button
-              green
-              text="Confirmar"
-              onClick={onOpen}
-              isLoading={loadingSaveGuest}
-            />
+            {!registered && (
+              <Button
+                green
+                text="Confirmar"
+                onClick={onOpen}
+                isLoading={loadingSaveGuest}
+              />
+            )}
           </GridItem>
         </Grid>
       </Flex>
