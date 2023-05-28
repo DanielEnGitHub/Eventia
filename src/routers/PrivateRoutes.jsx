@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Title from "../components/Texts/Title/Title";
+import Admin from "../pages/private/Admin/Admin";
 import Main from "../pages/private/Main";
 
 const PrivateRoutes = () => {
@@ -15,7 +16,7 @@ const PrivateRoutes = () => {
           path="/"
           element={
             <Main>
-              <Title content="EVENTIA" />
+              <Admin />
             </Main>
           }
         />

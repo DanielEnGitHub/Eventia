@@ -10,17 +10,13 @@ const Main = ({ children }) => {
   return (
     <Grid
       templateAreas={{
-        base: `"nav"
-              "main"`,
+        base: `"main"`,
         md: `"side main"`,
-        lg: `"side main sideright"`,
+        lg: `"side main"`,
       }}
-      gridTemplateRows={"100px 1fr"}
+      gridTemplateRows={"1fr"}
       gridTemplateColumns={{
-        base: "1fr",
         md: "90px 1fr",
-        lg: "90px 1fr 320px",
-        xl: "90px 1fr 450px",
       }}
       maxHeight="100vh"
       gap="5"
@@ -29,7 +25,7 @@ const Main = ({ children }) => {
       {/* ----Grid item for sidebar---- */}
       <SideBar area={"side"} variant={variants?.navigation} />
 
-      <GridItem area={"main"} maxHeight="86vh" overflow="auto" px="2" mb="5">
+      <GridItem area={"main"} maxHeight="100vh" overflow="auto" px="2" mb="5">
         {children}
       </GridItem>
     </Grid>
