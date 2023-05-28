@@ -21,6 +21,9 @@ export const theme = extendTheme({
       primary: "#d1ba8e",
       secondary: "#C0C9A2",
       secondaryLight: "#EAE9DF",
+      background: "#F5F1EE",
+      backgroundDark: "#E5DFDA",
+      textColor: "#4A4847",
     },
     primary: {
       300: "#F7D8C1",
