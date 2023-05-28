@@ -215,7 +215,7 @@ export const updateGuest = createAsyncThunk(
   "guest/updateGuest",
   async ({ id, guests }, { dispatch, rejectWithValue, getState }) => {
     try {
-      const { guests: _guests } = getState().guest;
+      const { guest_by_code: _guests } = getState().guest;
       const guest = updateDoc(doc(db, "guests", id), {
         guests,
         registered: true,
