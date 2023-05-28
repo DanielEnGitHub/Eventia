@@ -79,16 +79,27 @@ const ConfimrAssistance = () => {
         justifyContent="center"
         flexDir="column"
       >
-        <InvitationCard />
+        {/* <InvitationCard /> */}
         <Grid
-          templateAreas={`"mesa mesa" "titulo nombre" "tabla tabla" "total boton"`}
-          gridTemplateRows={"70px 150px 1fr 70px"}
-          gridTemplateColumns={`1fr 1fr`}
+          templateAreas={{
+            base: `"mesa" "titulo" "nombre" "tabla" "total" "boton"`,
+            md: `"mesa mesa" "titulo nombre" "tabla tabla" "total boton"`,
+          }}
+          gridTemplateRows={{
+            base: "70px 150px 150px 1fr 70px 70px",
+            md: "70px 150px 1fr 70px",
+          }}
+          gridTemplateColumns={{
+            base: "1fr",
+            md: "1fr 1fr",
+          }}
           bgColor="landing.background"
           w="900px"
           borderRadius="md"
           boxShadow="card"
           // gap={4}
+          maxWidth="95vw"
+          overflowX="auto"
           p="7"
         >
           <GridItem
@@ -100,7 +111,6 @@ const ConfimrAssistance = () => {
             alignItems="center"
           >
             <Text fontSize="2xl" color="landing.textColor">
-              {" "}
               No Mesa: {table_number}
             </Text>
           </GridItem>
@@ -148,8 +158,10 @@ const ConfimrAssistance = () => {
             py="6"
             border="1px"
             borderColor="landing.textColor"
+            maxWidth="95vw"
+            overflowX="auto"
           >
-            <Grid gridTemplateColumns="repeat(3, 1fr)" gap={4}>
+            <Grid gridTemplateColumns="repeat(3, 1fr)" gap={4} minW="300px">
               <GridItem gridColumn="1/3">
                 <Text fontSize="lg" color="landing.textColor">
                   Nombre

@@ -35,12 +35,22 @@ const VerifyInvitation = () => {
   }, [selectGuest]);
 
   return (
-    <Flex flexDir="column" alignItems="center" mt="14">
+    <Flex
+      flexDir="column"
+      alignItems="center"
+      mt={{ base: "10", md: "14" }}
+      pb={{ base: 10, md: 0 }}
+    >
       <Text color="landing.secondary" fontSize="3xl">
         Verifica tu invitacion
       </Text>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Flex alignItems="start" mt="5" gap="4">
+        <Flex
+          alignItems="start"
+          mt="5"
+          gap="4"
+          flexDir={{ base: "column", md: "row" }}
+        >
           <InputFormValidation
             placeholder="Ingresa tu codigo de invitacion"
             errors={errors}
