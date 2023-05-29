@@ -32,16 +32,23 @@ const InputFormValidation = ({
     <FormControl isInvalid={errors[key_name]}>
       {label && <FormLabel>{label}</FormLabel>}
       <InputGroup>
-        <InputLeftElement
-          pointerEvents="none"
-          color="gray.300"
-          fontSize="1.2em"
-          zIndex={zIndex}
-          // children="$"
-          children={
-            <Icon alt={"icon"} width="17px" marginLeft="7px" marginTop="6px" />
-          }
-        />
+        {Icon && (
+          <InputLeftElement
+            pointerEvents="none"
+            color="gray.300"
+            fontSize="1.2em"
+            zIndex={zIndex}
+            // children="$"
+            children={
+              <Icon
+                alt={"icon"}
+                width="17px"
+                marginLeft="7px"
+                marginTop="6px"
+              />
+            }
+          />
+        )}
         <Input
           minHeight="48px"
           autoComplete="off"
@@ -78,10 +85,10 @@ const InputFormValidation = ({
             key_name,
             validation
               ? {
-                  required: "This is required",
+                  required: "Este campo es requerido",
                   minLength: {
                     value: 4,
-                    message: "Minimum length should be 4",
+                    message: "Este campo debe tener al menos 4 caracteres",
                   },
                 }
               : {}

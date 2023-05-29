@@ -1,0 +1,29 @@
+.atropos {
+    /* position: absolute; */
+    width: 900px;
+    height: 600px;
+    box-shadow: none;
+    /* transform: translate(-50%, -50%); */
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
+}
+
+img.love {
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 400px;
+    height: 400px;
+}
+
+.title {
+    font-family: 'Arizonia', cursive;
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 400px;
+    height: 400px;
+}

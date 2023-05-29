@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import { theme } from "./theme";
 import { Provider } from "react-redux";
 import { store } from "./redux/app/store.js";
+import 'atropos/css'
 // import './index.css'
 
 ReactDOM.createRoot(document.getElementById("root")).render(

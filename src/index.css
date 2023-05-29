@@ -3,6 +3,11 @@
   height: 100vh;
 }
 
+.arizonia-font {
+  font-family: 'Arizonia', cursive;
+  /* font-family: 'Quicksand', sans-serif; */
+}
+
 /* Main form container */
 .form-container {
   width: 100%;
