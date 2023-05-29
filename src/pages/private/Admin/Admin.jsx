@@ -1,22 +1,21 @@
 import {
   Box,
-  Button,
+  Button as ButtonChakra,
   Container,
   Flex,
   Heading,
   Stack,
   Text,
-  Icon,
   useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
-import Title from "../../../components/Texts/Title/Title";
 import { EmailIcon, LockIcon } from "@chakra-ui/icons";
+import HeaderAdmin from "../../../components/HeaderInfo/HeaderAdmin";
 
-const Card = ({ heading, description, icon, href }) => {
+const Card = ({ heading, description, icon }) => {
   return (
     <Box
-      maxW={{ base: "full", xl: "48%"}}
+      maxW={{ base: "full", xl: "48%" }}
       h={"400px"}
       w={"full"}
       borderWidth="1px"
@@ -42,9 +41,9 @@ const Card = ({ heading, description, icon, href }) => {
             {description}
           </Text>
         </Box>
-        <Button variant={"link"} colorScheme={"blue"} size={"sm"}>
+        <ButtonChakra variant={"link"} colorScheme={"blue"} size={"sm"}>
           Learn more
-        </Button>
+        </ButtonChakra>
       </Stack>
     </Box>
   );
@@ -53,19 +52,13 @@ const Card = ({ heading, description, icon, href }) => {
 const Admin = () => {
   return (
     <>
-      {/* <Title content="EVENTIAS" /> */}
-
       <Box p={4}>
-        <Stack spacing={4} as={Container} maxW={""} textAlign={"center"}>
-          <Heading fontSize={{ base: "2xl", sm: "4xl" }} fontWeight={"bold"}>
-            Short heading
-          </Heading>
-          <Text color={"gray.600"} fontSize={{ base: "sm", sm: "lg" }}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            obcaecati ut cupiditate pariatur, dignissimos, placeat amet
-            officiis.
-          </Text>
-        </Stack>
+        <HeaderAdmin
+          title="INVITADOS"
+          textButton="Agregar Invitado"
+          showButton
+          onClick={() => {}}
+        />
 
         <Container maxW={"full"} mt={12}>
           <Flex flexWrap="wrap" gridGap={10} justify="center">
@@ -75,7 +68,6 @@ const Admin = () => {
               description={
                 "Lorem ipsum dolor sit amet catetur, adipisicing elit."
               }
-              href={"#"}
             />
             <Card
               heading={"Heading"}
@@ -83,7 +75,6 @@ const Admin = () => {
               description={
                 "Lorem ipsum dolor sit amet catetur, adipisicing elit."
               }
-              href={"#"}
             />
             <Card
               heading={"Heading"}
@@ -91,7 +82,6 @@ const Admin = () => {
               description={
                 "Lorem ipsum dolor sit amet catetur, adipisicing elit."
               }
-              href={"#"}
             />
             <Card
               heading={"Heading"}
@@ -99,7 +89,6 @@ const Admin = () => {
               description={
                 "Lorem ipsum dolor sit amet catetur, adipisicing elit."
               }
-              href={"#"}
             />
             <Card
               heading={"Heading"}
@@ -107,7 +96,6 @@ const Admin = () => {
               description={
                 "Lorem ipsum dolor sit amet catetur, adipisicing elit."
               }
-              href={"#"}
             />
           </Flex>
         </Container>

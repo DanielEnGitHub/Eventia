@@ -45,3 +45,7 @@
     width: 400px;
   }
 }
+
+.bg-image{
+  background-image: url("./assets/background.png");
+}
