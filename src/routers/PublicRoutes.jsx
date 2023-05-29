@@ -21,6 +21,9 @@ const PublicRoutes = () => {
           }
         />
         <Route end path="/components" element={<Components />} />
+
+        <Route end path="/login" element={<Login />} />
+        <Route end path="/test" element={<h1>Test</h1>} />
         <Route
           end
           path="/verificar-invitacion"
