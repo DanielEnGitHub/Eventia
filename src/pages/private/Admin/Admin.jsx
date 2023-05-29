@@ -1,58 +1,27 @@
 import {
   Box,
   Button as ButtonChakra,
+  Center,
   Container,
   Flex,
+  Grid,
+  GridItem,
   Heading,
   Stack,
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
-import { EmailIcon, LockIcon } from "@chakra-ui/icons";
+import { EmailIcon } from "@chakra-ui/icons";
 import HeaderAdmin from "../../../components/HeaderInfo/HeaderAdmin";
-
-const Card = ({ heading, description, icon }) => {
-  return (
-    <Box
-      maxW={{ base: "full", xl: "48%" }}
-      h={"400px"}
-      w={"full"}
-      borderWidth="1px"
-      borderRadius="lg"
-      overflow="hidden"
-      p={5}
-    >
-      <Stack align={"start"} spacing={2}>
-        <Flex
-          w={16}
-          h={16}
-          align={"center"}
-          justify={"center"}
-          color={"white"}
-          rounded={"full"}
-          bg={useColorModeValue("gray.100", "gray.700")}
-        >
-          {icon}
-        </Flex>
-        <Box mt={2}>
-          <Heading size="md">{heading}</Heading>
-          <Text mt={1} fontSize={"sm"}>
-            {description}
-          </Text>
-        </Box>
-        <ButtonChakra variant={"link"} colorScheme={"blue"} size={"sm"}>
-          Learn more
-        </ButtonChakra>
-      </Stack>
-    </Box>
-  );
-};
+import Subtitle from "../../../components/Texts/Subtitle/Subtitle";
+import TextContent from "../../../components/Texts/TextContent/TextContent";
+import Card from "../../../components/Card";
 
 const Admin = () => {
   return (
     <>
-      <Box p={4}>
+      <Box p="0" m="0">
         <HeaderAdmin
           title="INVITADOS"
           textButton="Agregar Invitado"
@@ -60,42 +29,35 @@ const Admin = () => {
           onClick={() => {}}
         />
 
-        <Container maxW={"full"} mt={12}>
-          <Flex flexWrap="wrap" gridGap={10} justify="center">
+        <Container maxW={"full"} p="0" mt={12}>
+          <Flex flexWrap="wrap" gridGap={15} justify="center">
             <Card
-              heading={"Heading"}
-              icon={<EmailIcon />}
-              description={
-                "Lorem ipsum dolor sit amet catetur, adipisicing elit."
-              }
+              family="Familia Gallina"
+              invitationCode="EYR001"
+              tableNumber="1 Y 2"
+            />
+
+            <Card
+              family="Familia Perez"
+              invitationCode="EYR001"
+              tableNumber="1 Y 2"
+            />
+
+            <Card
+              family="Familia Valencia"
+              invitationCode="EYR001"
+              tableNumber="1 Y 2"
+            />
+
+            <Card
+              family="Familia Dominguez"
+              invitationCode="EYR001"
+              tableNumber="1 Y 2"
             />
             <Card
-              heading={"Heading"}
-              icon={<EmailIcon />}
-              description={
-                "Lorem ipsum dolor sit amet catetur, adipisicing elit."
-              }
-            />
-            <Card
-              heading={"Heading"}
-              icon={<EmailIcon />}
-              description={
-                "Lorem ipsum dolor sit amet catetur, adipisicing elit."
-              }
-            />
-            <Card
-              heading={"Heading"}
-              icon={<EmailIcon />}
-              description={
-                "Lorem ipsum dolor sit amet catetur, adipisicing elit."
-              }
-            />
-            <Card
-              heading={"Heading"}
-              icon={<EmailIcon />}
-              description={
-                "Lorem ipsum dolor sit amet catetur, adipisicing elit."
-              }
+              family="Familia Villa"
+              invitationCode="EYR001"
+              tableNumber="1 Y 2"
             />
           </Flex>
         </Container>

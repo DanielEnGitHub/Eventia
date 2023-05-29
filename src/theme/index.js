@@ -54,7 +54,7 @@ export const theme = extendTheme({
   },
   shadows: {
     sidebar: "-5px 0px 20px 10px rgba(0, 0, 0, 0.05);",
-    card: "0px 20px 50px 15px rgba(0, 0, 0, 0.05);",
+    card: "0px 0px 30px rgba(0, 0, 0, 0.04);",
     table: "0px 2px 10px 3px rgba(0, 0, 0, 0.04);",
     tab: "0px -10px 50px 15px rgba(0, 0, 0, 0.06);",
   },

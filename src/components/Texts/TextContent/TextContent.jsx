@@ -5,6 +5,7 @@ const TextContent = ({
   content,
   children,
   gray = false,
+  blue = false,
   small = false,
   marginTop = "",
   marginBottom = "",
@@ -20,7 +21,7 @@ const TextContent = ({
     <Text
       {...props}
       fontSize={small ? "sm" : "md"}
-      color={gray ? "brand.gray" : "brand.black"}
+      color={gray ? "brand.gray" : blue ? "brand.blue" : "brand.black"}
       marginBottom={marginBottom}
       marginTop={marginTop}
       fontWeight={fontWeight}
