@@ -82,13 +82,17 @@ const ConfimrAssistance = () => {
         {/* <InvitationCard /> */}
         <Grid
           templateAreas={{
-            base: `"mesa" "titulo" "nombre" "tabla" "total" "boton"`,
+            base: registered
+              ? `"mesa" "nombre" "tabla" "total" "boton"`
+              : `"mesa" "titulo" "nombre" "tabla" "total" "boton"`,
             md: `"mesa mesa" "${
               registered ? "nombre nombre" : "titulo nombre"
             }" "tabla tabla" "total boton"`,
           }}
           gridTemplateRows={{
-            base: "70px 150px 150px 1fr 70px 70px",
+            base: registered
+              ? "70px 150px 1fr 70px 70px"
+              : "70px 150px 150px 1fr 70px 70px",
             md: "70px 150px 1fr 70px",
           }}
           gridTemplateColumns={{
