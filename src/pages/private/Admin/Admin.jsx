@@ -1,33 +1,13 @@
-import {
-  Box,
-  Button as ButtonChakra,
-  Center,
-  Container,
-  Flex,
-  Grid,
-  GridItem,
-  Heading,
-  Stack,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, Container, Flex } from "@chakra-ui/react";
 import React from "react";
-import { EmailIcon } from "@chakra-ui/icons";
 import HeaderAdmin from "../../../components/HeaderInfo/HeaderAdmin";
-import Subtitle from "../../../components/Texts/Subtitle/Subtitle";
-import TextContent from "../../../components/Texts/TextContent/TextContent";
 import Card from "../../../components/Card";
 
 const Admin = () => {
   return (
     <>
-      <Box p="0" m="0">
-        <HeaderAdmin
-          title="INVITADOS"
-          textButton="Agregar Invitado"
-          showButton
-          onClick={() => {}}
-        />
+      <Box p="0 10px 0 10px" m="0">
+        <HeaderAdmin title="INVITADOS" textButton="Agregar Invitado" />
 
         <Container maxW={"full"} p="0" mt={12}>
           <Flex flexWrap="wrap" gridGap={15} justify="center">

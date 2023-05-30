@@ -16,6 +16,8 @@ export const theme = extendTheme({
       warning: "#FFA113",
       error: "#F41213",
       bgWhite: "#F5F1EE",
+      greenS: "#58922B",
+      red: "#B55B5B",
     },
     landing: {
       primary: "#d1ba8e",

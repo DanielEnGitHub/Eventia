@@ -1,9 +1,77 @@
-import { Box, Grid, GridItem, Stack } from "@chakra-ui/react";
+import { Box, Center, Grid, GridItem, Stack, Text } from "@chakra-ui/react";
 import React from "react";
+import TableComponent from "../Tables/Table";
 import Subtitle from "../Texts/Subtitle/Subtitle";
 import TextContent from "../Texts/TextContent/TextContent";
 
 const Card = ({ family, invitationCode, tableNumber }) => {
+  const columns = [
+    {
+      Header: " ",
+      columns: [
+        {
+          Header: "#",
+          accessor: (d) => {
+            return (
+              <Center>
+                <Stack
+                  justifyContent="center"
+                  alignItems="center"
+                  h="45px"
+                  w="45px"
+                  bgColor="brand.mid"
+                  borderRadius="6px"
+                  m="6px 0 6px 0"
+                >
+                  <Text>{d.id}</Text>
+                </Stack>
+              </Center>
+            );
+          },
+        },
+        {
+          Header: "Nombres",
+          accessor: (d) => {
+            return (
+              <Text p="0 0 0 10px" w="200px">
+                {d.full_name}
+              </Text>
+            );
+          },
+        },
+        {
+          Header: "¿Asistira?",
+          accessor: (d) => {
+            return (
+              <Center>
+                <Text color={d.attend ? "brand.greenS" : "brand.red"}>
+                  {d.attend ? "Si Asistirá" : "No Asistirá"}
+                </Text>
+              </Center>
+            );
+          },
+        },
+      ],
+    },
+  ];
+
+  const data = [
+    {
+      attend: false,
+      full_name: "Test tes",
+      id: 1,
+    },
+    {
+      attend: false,
+      full_name: "Test test 1",
+      id: 2,
+    },
+    {
+      attend: true,
+      full_name: "Test tes 2",
+      id: 3,
+    },
+  ];
   return (
     <Box
       maxW={{ base: "full", xl: "49%" }}
@@ -32,8 +100,8 @@ const Card = ({ family, invitationCode, tableNumber }) => {
           </Stack>
         </GridItem>
         <GridItem rowSpan={3} colSpan={6}>
-          <Stack justifyContent="center" alignItems="center" h="full">
-            <Subtitle content="Tabla" />
+          <Stack h="full" overflow="auto">
+            <TableComponent columns={columns} data={data} />
           </Stack>
         </GridItem>
       </Grid>

@@ -6,6 +6,7 @@ import Subtitle from "../../Texts/Subtitle/Subtitle";
 const HeaderAdmin = ({
   title,
   showButton = false,
+  disabled = false,
   textButton = "Click",
   onClick = () => {},
 }) => {
@@ -49,6 +50,7 @@ const HeaderAdmin = ({
                 type="submit"
                 color="brand.primary"
                 onClick={onClick}
+                disabled={disabled}
               />
             </Stack>
           </Box>
