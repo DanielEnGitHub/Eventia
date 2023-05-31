@@ -4,7 +4,7 @@
 }
 
 .arizonia-font {
-  font-family: 'Arizonia', cursive;
+  font-family: "Arizonia", cursive;
   /* font-family: 'Quicksand', sans-serif; */
 }
 
@@ -46,6 +46,16 @@
   }
 }
 
-.bg-image{
+.bg-image {
   background-image: url("./assets/background.png");
+}
+
+.hide {
+  visibility: hidden;
+}
+
+@media only screen and (max-width: 766px) {
+  .hide {
+    visibility: visible;
+  }
 }
