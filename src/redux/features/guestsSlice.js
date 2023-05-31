@@ -276,7 +276,7 @@ export const guestSlice = createSlice({
     guest_data_update: null,
     guest_selected: null,
     loading: false,
-    loading_guest: false,
+    loading_guest: true,
     loading_update_guest: false,
     loading_save_guest: false,
     isUpdate: false,
@@ -371,14 +371,14 @@ export const guestSlice = createSlice({
     },
 
     [getGuestAll.pending]: (state) => {
-      state.loading = true;
+      state.loading_guest = true;
     },
     [getGuestAll.fulfilled]: (state, action) => {
-      state.loading = false;
+      state.loading_guest = false;
       state.guest_by_code = action.payload;
     },
     [getGuestAll.rejected]: (state, action) => {
-      state.loading = false;
+      state.loading_guest = false;
       state.error = action.payload;
     },
 
