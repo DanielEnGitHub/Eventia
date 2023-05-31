@@ -25,6 +25,7 @@ const Admin = () => {
               selectGuest.map((data, i) => {
                 return (
                   <Card
+                    key={i}
                     family={
                       `Familia ${data.general_name}` || `Familia ${i + 1}`
                     }

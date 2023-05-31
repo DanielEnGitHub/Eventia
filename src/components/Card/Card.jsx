@@ -13,7 +13,7 @@ const Card = ({ family, invitationCode, tableNumber, data = [] }) => {
           Header: "#",
           accessor: (d) => {
             return (
-              <Center>
+              <Box w="18px">
                 <Stack
                   justifyContent="center"
                   alignItems="center"
@@ -25,7 +25,7 @@ const Card = ({ family, invitationCode, tableNumber, data = [] }) => {
                 >
                   <Text>{d.id}</Text>
                 </Stack>
-              </Center>
+              </Box>
             );
           },
         },
@@ -33,7 +33,7 @@ const Card = ({ family, invitationCode, tableNumber, data = [] }) => {
           Header: "Nombres",
           accessor: (d) => {
             return (
-              <Text p="0 0 0 10px" w="200px">
+              <Text w={{ base: "200px", md: "250px" }} pl="40px">
                 {d.full_name}
               </Text>
             );
@@ -63,7 +63,7 @@ const Card = ({ family, invitationCode, tableNumber, data = [] }) => {
       boxShadow="card"
       borderWidth="1px"
       borderRadius="24px"
-      p={5}
+      p="35px 45px 35px 45px"
     >
       <Grid
         h="full"
@@ -83,7 +83,7 @@ const Card = ({ family, invitationCode, tableNumber, data = [] }) => {
           </Stack>
         </GridItem>
         <GridItem rowSpan={3} colSpan={6}>
-          <Stack h="full" overflow="auto">
+          <Stack p="0" m="0" h="full" overflow="auto">
             <TableComponent columns={columns} data={data} />
           </Stack>
         </GridItem>

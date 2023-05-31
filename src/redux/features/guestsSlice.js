@@ -188,8 +188,14 @@ export const getGuestAll = createAsyncThunk(
   "guest/getGuestAll",
   async ({}, { rejectWithValue }) => {
     try {
-      const docRef = collection(db, "guests");
+      const docRef = query(
+        collection(db, "guests"),
+        // where("active", "==", true),
+        orderBy("general_name", "asc")
+      );
+
       const q = query(docRef);
+
       const querySnapshot = await getDocs(q);
       const guests = [];
 
