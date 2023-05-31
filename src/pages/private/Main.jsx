@@ -10,12 +10,14 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import SideBar from "../../components/Layout/SideBar";
+import { useLogOut } from "../../hooks/useLogOut";
 import { Ilogout } from "../../utils/Utils";
 
 const smVariant = { navigation: "drawer", navigationButton: true };
 const mdVariant = { navigation: "sidebar", navigationButton: false };
 
 const Main = ({ children }) => {
+  const { logOut } = useLogOut();
   const variants = useBreakpointValue({ base: smVariant, md: mdVariant });
   return (
     <Grid
@@ -47,6 +49,8 @@ const Main = ({ children }) => {
         bottom="5"
         right="5"
         className="hide"
+        zIndex="1"
+        onClick={logOut}
       >
         <Center h="full">
           <Image src={Ilogout} w="25px" />
