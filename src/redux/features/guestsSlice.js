@@ -184,6 +184,30 @@ export const getGuestByCode = createAsyncThunk(
   }
 );
 
+export const getGuestAll = createAsyncThunk(
+  "guest/getGuestAll",
+  async ({}, { rejectWithValue }) => {
+    try {
+      const docRef = collection(db, "guests");
+      const q = query(docRef);
+      const querySnapshot = await getDocs(q);
+      const guests = [];
+
+      if (querySnapshot.docs.length > 0) {
+        querySnapshot.forEach((doc) => {
+          const { updated_at, ...rest } = doc.data();
+          guests.push({ ...rest });
+        });
+        return guests;
+      }
+      return guests;
+    } catch (err) {
+      toast.error(err);
+      return rejectWithValue(err);
+    }
+  }
+);
+
 export const changeStateGuest = createAsyncThunk(
   "guest/changeStateGuest",
   async ({ guest_id }, { dispatch, rejectWithValue }) => {
@@ -340,6 +364,18 @@ export const guestSlice = createSlice({
       state.error = action.payload;
     },
 
+    [getGuestAll.pending]: (state) => {
+      state.loading = true;
+    },
+    [getGuestAll.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.guest_by_code = action.payload;
+    },
+    [getGuestAll.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+
     [changeStateGuest.pending]: (state) => {
       state.loading_guest = true;
     },
@@ -380,6 +416,7 @@ export const {
 // selectors
 export const selectGuest = (state) => state.guest.guest;
 export const selectGuestByCode = (state) => state.guest.guest_by_code;
+export const guestAll = (state) => state.guest.guest_by_code;
 export const selectLoading = (state) => state.guest.loading;
 export const selectdGuests = (state) => state.guest.guests;
 export const selectLoadingdGuests = (state) => state.guest.loading_guest;

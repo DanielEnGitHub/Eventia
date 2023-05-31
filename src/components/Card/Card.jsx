@@ -4,7 +4,7 @@ import TableComponent from "../Tables/Table";
 import Subtitle from "../Texts/Subtitle/Subtitle";
 import TextContent from "../Texts/TextContent/TextContent";
 
-const Card = ({ family, invitationCode, tableNumber }) => {
+const Card = ({ family, invitationCode, tableNumber, data = [] }) => {
   const columns = [
     {
       Header: " ",
@@ -55,23 +55,6 @@ const Card = ({ family, invitationCode, tableNumber }) => {
     },
   ];
 
-  const data = [
-    {
-      attend: false,
-      full_name: "Test tes",
-      id: 1,
-    },
-    {
-      attend: false,
-      full_name: "Test test 1",
-      id: 2,
-    },
-    {
-      attend: true,
-      full_name: "Test tes 2",
-      id: 3,
-    },
-  ];
   return (
     <Box
       maxW={{ base: "full", xl: "49%" }}
