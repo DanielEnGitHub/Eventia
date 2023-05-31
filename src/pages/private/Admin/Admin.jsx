@@ -80,6 +80,7 @@ const Admin = () => {
                       invitationCode={data.invitation_code || "Sin Codigo"}
                       tableNumber={data.table_number || "Sin número de mesa"}
                       data={data.guests || []}
+                      registered={data.registered}
                     />
                   );
                 })}

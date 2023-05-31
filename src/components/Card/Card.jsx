@@ -4,7 +4,13 @@ import TableComponent from "../Tables/Table";
 import Subtitle from "../Texts/Subtitle/Subtitle";
 import TextContent from "../Texts/TextContent/TextContent";
 
-const Card = ({ family, invitationCode, tableNumber, data = [] }) => {
+const Card = ({
+  family,
+  invitationCode,
+  tableNumber,
+  registered,
+  data = [],
+}) => {
   const columns = [
     {
       Header: " ",
@@ -44,8 +50,20 @@ const Card = ({ family, invitationCode, tableNumber, data = [] }) => {
           accessor: (d) => {
             return (
               <Center>
-                <Text color={d.attend ? "brand.greenS" : "brand.red"}>
-                  {d.attend ? "Si Asistirá" : "No Asistirá"}
+                <Text
+                  color={
+                    d.attend
+                      ? "brand.greenS"
+                      : !registered
+                      ? "landing.textColor"
+                      : "brand.red"
+                  }
+                >
+                  {d.attend
+                    ? "Si Asistirá"
+                    : !registered
+                    ? "Sin Confirmar"
+                    : "No Asistirá"}
                 </Text>
               </Center>
             );
