@@ -62,6 +62,8 @@ const ConfimrAssistance = () => {
     }
   }, [selectGuest]);
 
+  console.log(registered);
+
   return (
     <>
       <ModalAlert
@@ -117,7 +119,11 @@ const ConfimrAssistance = () => {
             alignItems="center"
           >
             <Text fontSize="2xl" color="landing.textColor">
-              No Mesa: {table_number}
+              {table_number
+                ? `No Mesa: ${table_number}`
+                : registered
+                ? "Gracias por tu confirmación, ¡te esperamos!"
+                : "Por favor confirma tu asistencia en el siguiente listado."}
             </Text>
           </GridItem>
 
