@@ -32,7 +32,7 @@ const HeaderInfo = ({ ...props }) => {
       <Box w="3px" h="10" bgColor="landing.secondary" />
 
       <Text color="landing.secondary" fontSize={{ base: "3xl", md: "4xl" }}>
-        12:00 PM
+        11:40 PM
       </Text>
     </Flex>
   );
