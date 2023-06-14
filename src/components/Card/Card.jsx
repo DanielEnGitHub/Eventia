@@ -39,7 +39,11 @@ const Card = ({
           Header: "Nombres",
           accessor: (d) => {
             return (
-              <Text w={{ base: "200px", md: "250px" }} pl="40px">
+              <Text
+                w={{ base: "200px", md: "250px" }}
+                pl="40px"
+                style={{ width: "100%" }}
+              >
                 {d.full_name}
               </Text>
             );

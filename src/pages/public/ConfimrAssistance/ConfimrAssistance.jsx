@@ -62,8 +62,6 @@ const ConfimrAssistance = () => {
     }
   }, [selectGuest]);
 
-  console.log(registered);
-
   return (
     <>
       <ModalAlert
@@ -87,19 +85,14 @@ const ConfimrAssistance = () => {
             base: registered
               ? `"mesa" "nombre" "tabla" "total" "boton"`
               : `"mesa" "titulo" "nombre" "tabla" "total" "boton"`,
-            md: `"mesa mesa" "${
-              registered ? "nombre nombre" : "titulo nombre"
-            }" "tabla tabla" "total boton"`,
           }}
           gridTemplateRows={{
             base: registered
               ? "70px 150px 1fr 70px 70px"
               : "70px 150px 150px 1fr 70px 70px",
-            md: "70px 150px 1fr 70px",
           }}
           gridTemplateColumns={{
             base: "1fr",
-            md: "1fr 1fr",
           }}
           bgColor="landing.background"
           w="900px"
@@ -123,7 +116,7 @@ const ConfimrAssistance = () => {
                 ? `No Mesa: ${table_number}`
                 : registered
                 ? "Gracias por tu confirmación, ¡te esperamos!"
-                : "Por favor confirma tu asistencia en el siguiente listado."}
+                : "Por favor, confirme su asistencia en el siguiente listado."}
             </Text>
           </GridItem>
 
@@ -138,11 +131,11 @@ const ConfimrAssistance = () => {
               flexDir="column"
               justifyContent="center"
             >
-              <FontText fontSize="6xl" color="landing.textColor">
-                Confirmar
-              </FontText>
-              <FontText fontSize="6xl" color="landing.textColor">
-                Asistencia
+              <FontText
+                fontSize={{ base: "5xl", md: "6xl" }}
+                color="landing.textColor"
+              >
+                Confirmar Asistencia
               </FontText>
             </GridItem>
           )}
@@ -157,19 +150,12 @@ const ConfimrAssistance = () => {
             flexDir="column"
             justifyContent="center"
           >
-            {!registered &&
-              general_name &&
-              general_name?.split(" ").map((name) => (
-                <FontText key={name} fontSize="6xl" color="landing.textColor">
-                  {name}
-                </FontText>
-              ))}
-
-            {registered && (
-              <FontText fontSize="6xl" color="landing.textColor">
-                {general_name}
-              </FontText>
-            )}
+            <FontText
+              fontSize={{ base: "5xl", md: "6xl" }}
+              color="landing.textColor"
+            >
+              {general_name}
+            </FontText>
           </GridItem>
 
           <GridItem

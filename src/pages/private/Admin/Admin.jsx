@@ -74,9 +74,7 @@ const Admin = () => {
                   return (
                     <Card
                       key={i}
-                      family={
-                        `Familia ${data.general_name}` || `Familia ${i + 1}`
-                      }
+                      family={`Invitado: ${data.general_name || i + 1}`}
                       invitationCode={data.invitation_code || "Sin Codigo"}
                       tableNumber={data.table_number || "Sin número de mesa"}
                       data={data.guests || []}
