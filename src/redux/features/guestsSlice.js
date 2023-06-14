@@ -53,6 +53,36 @@ export const createGuest = createAsyncThunk(
   }
 );
 
+export const bulkCreateGuests = createAsyncThunk(
+  "guest/bulkCreateGuests",
+  async (guests) => {
+    console.log("guests", guests);
+    try {
+      const guestsCollection = collection(db, "guests");
+      // const batch = writeBatch(db);
+
+      guests.forEach(async (guest) => {
+        console.log("guest", guest);
+        await addDoc(guestsCollection, {
+          ...document_info,
+          ...guest,
+        });
+        // batch.set(guestsCollection, { ...document_info, ...guest });
+
+      });
+
+      // await batch.commit();
+
+      toast.success("Invitaciones creadas");
+
+      return guests;
+    } catch (err) {
+      toast.error(err.message);
+      // return rejectWithValue(err);
+    }
+  }
+);
+
 const getQuery = (guestsCollection, sort = "asc") => {
   return query(
     guestsCollection,
@@ -201,7 +231,7 @@ export const getGuestAll = createAsyncThunk(
 
       if (querySnapshot.docs.length > 0) {
         querySnapshot.forEach((doc) => {
-          const { updated_at, ...rest } = doc.data();
+          const { updated_at, created_at, ...rest } = doc.data();
           guests.push({ ...rest });
         });
         return guests;
